@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
+    path('/', include('app1.urls')),
     ##""" стандартный вариант path('', include('имя_модуля.файл_URLS'))"""##
     ##Модуль создается через команду manage.py startapp <имя_модуля>##
 ]

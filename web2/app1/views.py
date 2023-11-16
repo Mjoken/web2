@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
 ###ФУНКЦИИ ДЛЯ РЕКВЕСТОВ (СТРАНИЦЫ)###
-def app1(request):
-    return render(request, "app1/app1.html")
+def index(request):
+    return render(request, "html/index.html")
+def index_add(request):
+    return render(request, "html/index_add.html")
