@@ -64,6 +64,18 @@ body {
 .new {
 	margin-bottom: 30px;
 }
+.info {
+	width: inherit;
+}
+.image img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 7px;
+}
+.image img {
+	margin-bottom: 10px;
+}
 .info h3{
 	font-size: 32px;
 	font-weight: 700;
@@ -71,8 +83,7 @@ body {
 }
 
 .info-description {
-	display: flex;
-	justify-content: space-between;
+	width: inherit;
 	margin-top: 10px;
 }
 .go-to-new{
@@ -83,5 +94,16 @@ body {
 	align-items: center;
 	justify-content: center;
 	border-radius: 10px;
+}
+.description {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 8px;
+	text-align: justify;
+}
+.time {
+	font-size: 20px;
+	font-weight: 700;
+	color: skyblue;
 }
 
