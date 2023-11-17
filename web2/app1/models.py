@@ -1,3 +1,12 @@
 from django.db import models
 
-# Create your models here.
+
+class StudySession(models.Model):
+    group = models.CharField(max_lenght=10)
+    title = models.CharField(max_lenght=255)
+    short_title = models.CharField(max_lenght=10)
+    session_type = models.PositiveSmallIntegerField(default=0)
+    subgroup = models.PositiveSmallIntegerField()
+    comment = models.TextField(blank=True)
+    time_start = models.DateTimeField()
+    time_end = models.DateTimeField()
