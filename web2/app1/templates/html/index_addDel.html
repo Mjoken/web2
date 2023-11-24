@@ -28,12 +28,38 @@
 			<a href="index.html" class="navbar-brand">Расписание</a>
 
 			<ul class="navbar-menu">
-				<li><a href="index_del.html">Удаление события</a></li>
 				<li><a href="index_info.html">Авторизация</a></li>
 				<li><a href="index_info.html">Информация</a></li>
 			</ul>
 		</div>
 	</nav>
-	
+    <!-- CRUD таблица изменения бд сайта -->
+	<form method="POST" action="create/">
+        {% csrf_token %}
+        <p>
+            <label>Введите группу</label><br>
+            <input type="text" name="group" />
+        </p>
+        <p>
+            <label>Введите название предмета</label><br>
+            <input type="text" name="title" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+    {% if people.count > 0 %}
+    <h2>Список предметов</h2>
+    <table>
+        <thead><th>Id</th><th>Группа</th><th>Название</th><th></th></thead>
+        {% for lesson in studySession %}
+        <tr>
+            <td>{{ lesson.id }}</td>
+            <td>{{ lesson.group }}</td>
+            <td>{{ lesson.title }}</td>
+            <td><a href="edit/{{lesson.group}}">Изменить</a> | <a href="delete/{{lesson.title}}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <!-- CRUD таблица изменения бд сайта -->
 </body>
 </html>

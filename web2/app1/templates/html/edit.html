@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="static/styles/styles.css">
 
 	<link rel="icon" href="static/data/favicon.svg" type="image/svg+xml">
-	
+
 </head>
 <body>
 
@@ -28,12 +28,24 @@
 			<a href="index.html" class="navbar-brand">Расписание</a>
 
 			<ul class="navbar-menu">
-				<li><a href="index_add.html">Добавление события</a></li>
 				<li><a href="index_info.html">Авторизация</a></li>
 				<li><a href="index_info.html">Информация</a></li>
 			</ul>
 		</div>
 	</nav>
-	
+    <!-- CRUD таблица изменения бд сайта -->
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Введите группу</label><br>
+            <input type="text" name="group" value="{{studySession.group}}" />
+        </p>
+        <p>
+            <label>Введите название предмета</label><br>
+            <input type="text" name="title" value="{{studySession.title}}" />
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+	<!-- CRUD таблица изменения бд сайта -->
 </body>
 </html>

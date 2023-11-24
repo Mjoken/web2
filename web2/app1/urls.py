@@ -9,8 +9,10 @@ from .views import *
 urlpatterns = [
     path('', index),
     path('index.html', index),
-    path('index_add.html', index_add),
-    path('index_del.html', index_del),
+    path('index_addDel.html', index_addDel),
+    path("create/", create),
+    path("edit/<int:id>/", edit),
+    path("delete/<int:id>/", delete),
     path('index_info.html', index_info),
     path('index_auth.html', index_auth),
 ]
