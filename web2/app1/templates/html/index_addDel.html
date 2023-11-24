@@ -44,18 +44,52 @@
             <label>Введите название предмета</label><br>
             <input type="text" name="title" />
         </p>
+         <p>
+            <label>Введите название сокращенное название предмета</label><br>
+            <input type="text" name="short_title" />
+        </p>
+        <p>
+            <label>Введите вид занятия (Лекция/Семинар/Лабораторная/Практика) </label><br>
+            <input type="number" name="session_type" />
+        </p>
+         <p>
+            <label>Введите подгруппу (необязательно) </label><br>
+            <input type="number" name="subgroup" />
+        </p>
+         <p>
+            <label>Введите заметку (необязательно) </label><br>
+            <input type="text" name="comment" />
+        </p>
+        <p>
+            <label>Введите время начала занятия </label><br>
+            <input type="datetime-local" name="time_start" />
+        </p>
+        <p>
+            <label>Введите время окончания занятия </label><br>
+            <input type="datetime-local" name="time_end" />
+        </p>
         <input type="submit" value="Сохранить" >
     </form>
     {% if people.count > 0 %}
     <h2>Список предметов</h2>
     <table>
-        <thead><th>Id</th><th>Группа</th><th>Название</th><th></th></thead>
+        <thead>
+        <th>Id</th><th>Группа</th><th>Название</th>
+        <th>Сокращенное название</th><th>Тип занятия</th><th>Подгруппа</th>
+        <th>Заметка</th><th>Начало Занятия</th><th>Окончание Занятия</th>
+        <th></th></thead>
         {% for lesson in studySession %}
         <tr>
             <td>{{ lesson.id }}</td>
             <td>{{ lesson.group }}</td>
             <td>{{ lesson.title }}</td>
-            <td><a href="edit/{{lesson.group}}">Изменить</a> | <a href="delete/{{lesson.title}}">Удалить</a></td>
+            <td>{{ lesson.short_title }}</td>
+            <td>{{ lesson.session_type }}</td>
+            <td>{{ lesson.subgroup }}</td>
+            <td>{{ lesson.comment }}</td>
+            <td>{{ lesson.time_start }}</td>
+            <td>{{ lesson.time_end }}</td>
+            <td><a href="edit/{{lesson.id}}">Изменить</a> | <a href="delete/{{lesson.id}}">Удалить</a></td>
         </tr>
         {% endfor %}
     </table>
