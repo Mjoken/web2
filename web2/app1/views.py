@@ -44,7 +44,7 @@ def edit(request, id):
             studysession.save()
             return HttpResponseRedirect("/")
         else:
-            return render(request, "edit.html", {"studySession": studysession})
+            return render(request, "html/edit.html", {"studysession": studysession})
     except StudySession.DoesNotExist:
         return HttpResponseNotFound("<h2>StudySession not found</h2>")
 
