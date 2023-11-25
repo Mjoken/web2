@@ -42,15 +42,18 @@
             <div class="form-row">
                <div class="form-group col-md-6">
                    <label for = "GroupName">Введите группу</label><br>
-                        <input type="text" class="form-control" name="group" id = "GroupName" placeholder="21-ИВТ-3"/>
+                        <input type="text" class="form-control" name="group" id = "GroupName" placeholder="21-ИВТ-3" required/>
+                   <span class="validity"></span>
                </div>
                <div class="form-group col-md-6">
                    <label for="TitleName">Введите название предмета</label><br>
-                        <input type="text" class="form-control" name="title" id ="TitleName" placeholder="Математический анализ"/>
+                        <input type="text" class="form-control" name="title" id ="TitleName" placeholder="Математический анализ" required/>
+                   <span class="validity"></span>
                </div>
                <div class="form-group">
                     <label for="inputStitle">Сокращение предмета</label>
-                    <input type="text" class="form-control" name = "short_title" id="inputStitle" placeholder="Мат.Анализ"/>
+                    <input type="text" class="form-control" name = "short_title" id="inputStitle" placeholder="Мат.Анализ" required/>
+                   <span class="validity"></span>
                </div>
                <div class="form-group col-md-4">
                     <label for="inputStitle">Тип предмета</label>
@@ -71,11 +74,13 @@
                </div>
                <p>
                 <label>Введите время начала занятия </label><br>
-                <input type="datetime-local" name="time_start" />
+                <input type="datetime-local" name="time_start" required />
+                   <span class="validity"></span>
             </p>
             <p>
                 <label>Введите время окончания занятия </label><br>
-                <input type="datetime-local" name="time_end" />
+                <input type="datetime-local" name="time_end" required/>
+                <span class="validity"></span>
             </p>
           </div>
 
