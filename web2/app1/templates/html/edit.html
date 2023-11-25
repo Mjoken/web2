@@ -7,17 +7,19 @@
 	<title>Timesheet</title>
 
 	<!-- Bootstrap reboot (для сброса стилей) -->
-	<link rel="stylesheet" href="static/styles/bootstrap-reboot.min.css">
+	<link rel="stylesheet"  href="/static/styles/bootstrap-reboot.min.css">
 
 	<!-- Bootstrap сетка -->
-	<link rel="stylesheet" href="static/styles/bootstrap-grid.min.css">
+	<link rel="stylesheet"  href="/static/styles/bootstrap-grid.min.css">
 
 	<!-- Шрифты с Google Fonts -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-	<!-- Стили сайта -->
-	<link rel="stylesheet" href="static/styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Стили сайта -->
+	<link rel="stylesheet"  href="/static/styles/styles.css">
 
 	<link rel="icon" href="static/data/favicon.svg" type="image/svg+xml">
 
@@ -26,27 +28,59 @@
 
 	<nav class="navbar">
 		<div class="container">
-			<a href="index.html" class="navbar-brand">Расписание</a>
+			<a href="/index.html" class="navbar-brand">Расписание</a>
 
 			<ul class="navbar-menu">
-				<li><a href="index_info.html">Авторизация</a></li>
-				<li><a href="index_info.html">Информация</a></li>
+				<li><a href="/index_info.html">Авторизация</a></li>
+				<li><a href="/index_info.html">Информация</a></li>
 			</ul>
 		</div>
 	</nav>
     <!-- CRUD таблица изменения бд сайта -->
-    <form method="POST">
+    <form method="POST" >
         {% csrf_token %}
-        <p>
-            <label>Введите группу</label><br>
-            <input type="text" name="group" value="{{studySession.group}}" />
+
+		 <div class="form-row">
+           <div class="form-group col-md-6">
+               <label for = "GroupName">Группа</label><br>
+                    <input type="text" class="form-control" name="group" id = "GroupName" placeholder="{{studysession.group}}" value = "{{studysession.group}}"/>
+           </div>
+           <div class="form-group col-md-6">
+               <label for="TitleName">Название предмета</label><br>
+                    <input type="text" class="form-control" name="title" id ="TitleName" placeholder="{{studysession.title}}" value = "{{studysession.title}}"/>
+           </div>
+           <div class="form-group">
+                <label for="inputStitle">Сокращение предмета</label>
+                <input type="text" class="form-control" name = "short_title" id="inputStitle" maxlength="15" placeholder="{{studysession.short_title}}" value = "{{studysession.short_title}}"/>
+           </div>
+           <div class="form-group col-md-4">
+                <label for="inputStitle">Тип предмета</label>
+                <select class="form-select" required aria-label="select example" id="" name = "session_type">
+                        <option value="0">Лекция</option>
+                        <option value="1">Семинар</option>
+                        <option value="2">Лабораторная</option>
+                        <option value="3">Практика</option>
+                </select>
+            </div>
+           <div class="form-group col-md-4">
+               <label for="SubGroupInput"> № Подгруппы </label><br>
+               <input type="number" class="form-control" name="subgroup" id="SubGroupInput" placeholder="{{studysession.subgroup}}" value = "{{studysession.subgroup}}"/>
+           </div>
+           <div class="form-group col-md-4">
+               <label for="CommentInput"> Заметка </label><br>
+                <input type="text" class="form-control" name="comment" id="CommentInput" placeholder="{{studysession.comment}}" value = "{{studysession.comment}}"/>
+           </div>
+           <p>
+            <label>Время начала занятия </label><br>
+            <input type="datetime-local" name="time_start" value = "{{studysession.time_start}}"/>
         </p>
         <p>
-            <label>Введите название предмета</label><br>
-            <input type="text" name="title" value="{{studySession.title}}" />
+            <label>Время окончания занятия </label><br>
+            <input type="datetime-local" name="time_end" value = "{{studysession.time_end}}"/>
         </p>
-        <input type="submit" value="Сохранить" >
+      </div>
     </form>
+	<input type="submit" value="Сохранить" class="btn btn-primary" >
 	<!-- CRUD таблица изменения бд сайта -->
 </body>
 </html>
