@@ -36,52 +36,54 @@
 		</div>
 	</nav>
     <!-- CRUD таблица изменения бд сайта -->
-	<form method="POST" action="create/">
-        {% csrf_token %}
+    <div class="container">
+        <form method="POST" action="create/">
+            {% csrf_token %}
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label for = "GroupName">Введите группу</label><br>
+                        <input type="text" class="form-control" name="group" id = "GroupName" placeholder="21-ИВТ-3"/>
+               </div>
+               <div class="form-group col-md-6">
+                   <label for="TitleName">Введите название предмета</label><br>
+                        <input type="text" class="form-control" name="title" id ="TitleName" placeholder="Математический анализ"/>
+               </div>
+               <div class="form-group">
+                    <label for="inputStitle">Сокращение предмета</label>
+                    <input type="text" class="form-control" name = "short_title" id="inputStitle" placeholder="Мат.Анализ"/>
+               </div>
+               <div class="form-group col-md-4">
+                    <label for="inputStitle">Тип предмета</label>
+                    <select class="form-select" required aria-label="select example" id="" name = "session_type">
+                            <option value="0">Лекция</option>
+                            <option value="1">Семинар</option>
+                            <option value="2">Лабораторная</option>
+                            <option value="3">Практика</option>
+                    </select>
+                </div>
+               <div class="form-group col-md-6">
+                   <label for="SubGroupInput">Введите подгруппу (необязательно) </label><br>
+                   <input type="number" class="form-control" name="subgroup" id="SubGroupInput"/>
+               </div>
+               <div class="form-group col-md-6">
+                   <label for="CommentInput">Введите заметку (необязательно) </label><br>
+                    <input type="text" class="form-control" name="comment" id="CommentInput"/>
+               </div>
+               <p>
+                <label>Введите время начала занятия </label><br>
+                <input type="datetime-local" name="time_start" />
+            </p>
+            <p>
+                <label>Введите время окончания занятия </label><br>
+                <input type="datetime-local" name="time_end" />
+            </p>
+          </div>
 
-        <div class="form-row">
-           <div class="form-group col-md-6">
-               <label for = "GroupName">Введите группу</label><br>
-                    <input type="text" class="form-control" name="group" id = "GroupName" placeholder="21-ИВТ-3"/>
-           </div>
-           <div class="form-group col-md-6">
-               <label for="TitleName">Введите название предмета</label><br>
-                    <input type="text" class="form-control" name="title" id ="TitleName" placeholder="Математический анализ"/>
-           </div>
-           <div class="form-group">
-                <label for="inputStitle">Сокращение предмета</label>
-                <input type="text" class="form-control" name = "short_title" id="inputStitle" placeholder="Мат.Анализ"/>
-           </div>
-           <div class="form-group col-md-4">
-                <label for="inputStitle">Тип предмета</label>
-                <select class="form-select" required aria-label="select example" id="" name = "session_type">
-                        <option value="0">Лекция</option>
-                        <option value="1">Семинар</option>
-                        <option value="2">Лабораторная</option>
-                        <option value="3">Практика</option>
-                </select>
-            </div>
-           <div class="form-group col-md-6">
-               <label for="SubGroupInput">Введите подгруппу (необязательно) </label><br>
-               <input type="number" class="form-control" name="subgroup" id="SubGroupInput"/>
-           </div>
-           <div class="form-group col-md-6">
-               <label for="CommentInput">Введите заметку (необязательно) </label><br>
-                <input type="text" class="form-control" name="comment" id="CommentInput"/>
-           </div>
-           <p>
-            <label>Введите время начала занятия </label><br>
-            <input type="datetime-local" name="time_start" />
-        </p>
-        <p>
-            <label>Введите время окончания занятия </label><br>
-            <input type="datetime-local" name="time_end" />
-        </p>
-      </div>
-
-        <input type="submit" value="Сохранить" class="btn btn-primary">
-    </form>
+            <input type="submit" value="Сохранить" class="btn btn-primary">
+        </form>
+    </div>
     {% if studysession.count > 0 %}
+    <div class="container">
     <h2>Список предметов</h2>
     <table class="table table-hover">
         <thead>
@@ -105,6 +107,7 @@
         {% endfor %}
     </table>
     {% endif %}
+    </div>
     <!-- CRUD таблица изменения бд сайта -->
 </body>
 </html>
