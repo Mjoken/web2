@@ -4,7 +4,8 @@ from .models import StudySession
 
 ###ФУНКЦИИ ДЛЯ РЕКВЕСТОВ (СТРАНИЦЫ)###
 def index(request):
-    return render(request, "html/index.html")
+    studysession = StudySession.objects.all()
+    return render(request, "html/index.html", {"studysession": studysession})
 
 
 def index_addDel(request):

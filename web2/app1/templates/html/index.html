@@ -41,23 +41,24 @@
 	<div class="container">
 
 		<div class="row">
-
+		 {% for lesson in studysession %}
 			<div class="col-md-4">
 				<div class="new">
 					<div class = "image">
 						<img src = "http://placehold.it/300x400" alt ="">
 					</div>
 					<div class="info">
-						<h3>Заголовок события</h3>
+						<h3>{{ lesson.title }}</h3>
 						<div class="info-description">
-							<span class="time">13:00-15:00</span>
-							<span class="description">Описание события</span>
+							<span class="time">{{ lesson.time_start }}</span>
+							<span class="description">{{ lesson.comment }}</span>
 							<button class="go-to-new"><ion-icon name="open-outline"></ion-icon></button>
 						</div>
 					</div>
 
 				</div>
-			</div>	
+			</div>
+			{% endfor %}
 		</div>	
 	</div>
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
