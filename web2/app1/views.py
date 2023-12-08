@@ -92,6 +92,6 @@ def index_login(request):
     return render(request, "html/index_login.html")
 
 
-def logout(request):
+def index_logout(request):
     logout(request)
     return redirect('/login')
