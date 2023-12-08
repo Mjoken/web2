@@ -16,11 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+from app1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
     path('/', include('app1.urls')),
+    path('login/', auth_views.LoginView.as_view(template_name='html/index_login.html'), name='login'),
+    path('register/', views.index_register, name='register'),
+
     # стандартный вариант path('', include('имя_модуля.файл_URLS'))
     # Модуль создается через команду manage.py startapp <имя_модуля>
 ]

@@ -30,12 +30,12 @@
 
 	<nav class="navbar">
 		<div class="container">
-			<a href="index.html" class="navbar-brand">Расписание</a>
+			<a href="/index.html" class="navbar-brand">Расписание</a>
 
 			<ul class="navbar-menu">
-				<li><a href="index_addDel.html">Работа с событиями</a></li>
-				<li><a href="index_info.html">Информация</a></li>
-				<li><a href="index_login.html">Войти</a></li>
+				<li><a href="/index_addDel.html">Работа с событиями</a></li>
+				<li><a href="/index_info.html">Информация</a></li>
+				| <li><a href="/login">Войти</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -45,7 +45,7 @@
 	<form method="post">
 			<div class="container">
 				{% csrf_token %}
-				{{ form.as_p }}
+				{{form.as_p}}
 				<button type="submit" class="btn btn-primary">Регистрация</button>
 			</div>
 	</form>
