@@ -1,19 +1,23 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-
 from .models import *
+
+
 ###ФУНКЦИИ ДЛЯ РЕКВЕСТОВ (СТРАНИЦЫ)###
 def index(request):
     studysession = StudySession.objects.all()
-    return render(request, "html/index.html", {"studysession": studysession})
+    user = request.user
+    return render(request, "html/index.html", {"studysession": studysession, "user": user})
 
 
 def index_addDel(request):
     studysession = StudySession.objects.all()
     return render(request, "html/index_addDel.html", {"studysession": studysession})
+
 
 # сохранение данных в бд
 def create(request):
@@ -83,6 +87,11 @@ def index_register(request):
         form = UserCreationForm()
     return render(request, 'html/index_register.html', {'form': form})
 
+
 def index_login(request):
     return render(request, "html/index_login.html")
 
+
+def logout(request):
+    logout(request)
+    return redirect('/login')
