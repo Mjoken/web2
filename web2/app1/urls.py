@@ -14,5 +14,6 @@ urlpatterns = [
     path("edit/<int:id>/", edit),
     path("delete/<int:id>/", delete),
     path('index_info.html', index_info),
-    path('index_auth.html', index_auth),
+    path('index_register.html', index_register),
+    path('index_login.html', index_login),
 ]

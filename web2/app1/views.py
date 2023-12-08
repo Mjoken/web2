@@ -1,7 +1,10 @@
-from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseNotFound
-from .models import StudySession
+from django.http import HttpResponse, HttpResponseNotFound, Http404
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 
+from .models import *
 ###ФУНКЦИИ ДЛЯ РЕКВЕСТОВ (СТРАНИЦЫ)###
 def index(request):
     studysession = StudySession.objects.all()
@@ -59,9 +62,35 @@ def delete(request, id):
     except StudySession.DoesNotExist:
         return HttpResponseNotFound("<h2>StudySession not found</h2>")
 
-def index_auth(request):
-    return render(request, "html/index_auth.html")
-
 
 def index_info(request):
     return render(request, "html/index_info.html")
+
+"""class RegisterUser(CreateView):
+    form_class = UserCreationForm
+    template_name = 'app1/index_index_register.html'
+    success_url = reverse_lazy('html/login.html')
+
+    def index_register(request):
+        c_def = self.
+        return render(request, "html/index_register.html")
+"""
+def index_register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # получаем имя пользователя и пароль из формы
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            # выполняем аутентификацию
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'html/index_register.html', {'form': form})
+
+def index_login(request):
+    return render(request, "html/index_login.html")
+
