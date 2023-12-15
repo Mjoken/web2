@@ -17,7 +17,6 @@ class UserLoginForm(AuthenticationForm):
                'placeholder': 'AllEgg@mail.ru',
                'id': 'email',
                'title': 'Электронная почта',
-               'name': 'username',
                }))
     password = forms.CharField(label="Пароль", widget=forms.PasswordInput(
         attrs={
@@ -44,8 +43,8 @@ class CustomUserCreationForm(UserCreationForm):
     group = forms.CharField(label='Группа', max_length=10, required=True)
     subgroup = forms.CharField(label='Подгруппа', max_length=10, required=False)
     id_card = forms.IntegerField(label='Номер ст. билета', help_text='Цифровое представление ст. Билета (7 цифр)', min_value=0, max_value=9999999)
-    is_mag = forms.BooleanField(label='Магистрант')
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+    is_mag = forms.BooleanField(label='Магистрант', required=False)
+    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Подтвердите Пароль', widget=forms.PasswordInput)
 
     class Meta:  # define a metadata related to this class
@@ -58,7 +57,7 @@ class CustomUserCreationForm(UserCreationForm):
             'group',
             'id_card',
             'is_mag',
-            'password',
+            'password1',
             'password2',
 
         )
@@ -79,7 +78,7 @@ class CustomUserCreationForm(UserCreationForm):
 
     def clean_password2(self):
         cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
+        if cd['password1'] != cd['password2']:
             raise forms.ValidationError('Пароли не совпадают.')
         return cd['password2']
 

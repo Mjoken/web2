@@ -6,7 +6,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from students.forms import CustomUserCreationForm
+from students.forms import CustomUserCreationForm, UserLoginForm
 from .models import *
 
 
@@ -88,14 +88,27 @@ def index_register(request):
             login(request, user)
             return redirect('/')
         else:
-            messages.error(request,"Ошибка при регистрации")
+            messages.error(request, "Ошибка при регистрации")
     else:
         form = CustomUserCreationForm()
     return render(request, 'html/index_register.html', {'form': form})
 
 
 def index_login(request):
-    return render(request, "html/index_login.html")
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=email, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+            else:
+                form.add_error(None, "Неверная почта или пароль.")
+    else:
+        form = UserLoginForm()
+    return render(request, "html/index_login.html", {'form': form})
 
 
 def index_logout(request):

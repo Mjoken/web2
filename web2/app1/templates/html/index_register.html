@@ -36,7 +36,7 @@
 				<li><a href="/index_addDel.html">Работа с событиями</a></li>
 				<li><a href="/index_info.html">Информация</a></li>
 				{% if request.user.is_authenticated %}
-				    <li><a style = "color: blue">{{ user.get_username }} </a>|<a href="/logout">Выйти</a></li>
+				    <li><a style = "color: blue">{{ user.get_full_name }} </a>|<a href="/logout">Выйти</a></li>
 				{% else %}
 				     |<a href="/login">Войти</a></li>
 				{% endif %}

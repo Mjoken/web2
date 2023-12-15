@@ -4,6 +4,8 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import gettext_lazy as _
 from students.managers import *
+
+
 # Create your models here.
 
 class Student(AbstractBaseUser, PermissionsMixin):
@@ -23,18 +25,32 @@ class Student(AbstractBaseUser, PermissionsMixin):
     is_student = models.BooleanField(default=True)
     objects = StudentUserManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'second_name', 'group', 'is_mag', 'id_card']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'second_name', 'group', 'id_card']
 
     def __str__(self):
         return self.email
 
-    def get_username(self):
+    def get_email(self):
         return self.email
 
+    def get_short_name(self):
+        return self.first_name
+
+    def get_full_name(self):
+        full_name = '%s %s' % (self.first_name, self.last_name)
+        return full_name.strip()
+
+    def get_group(self):
+        return self.group
+
+    def get_group_filtered(self):
+        group_filtered = str(self.group).lower().replace('-', '')
+        return group_filtered
+
+    def get_id_card(self):
+        return self.id_card
 
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")
         db_table = 'auth_user'
-
-

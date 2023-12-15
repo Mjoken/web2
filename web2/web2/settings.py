@@ -103,6 +103,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'students.Student'
 
+AUTHENTICATION_BACKENDS = [
+    'students.backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    ]
+
 ACCOUNT_AUTHENTICATION_METHOD ="email"
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
@@ -123,8 +128,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 LOGIN_REDIRECT_URL = '/index.html'
-STATIC_URL = "static/"
-STATICFILES_DIRS =[os.path.join(BASE_DIR,'static')]
+STATIC_URL = "/static/"
+STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static'), ]
 
 
 # Default primary key field type
