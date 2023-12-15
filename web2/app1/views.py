@@ -18,12 +18,16 @@ def index(request):
 
 
 def index_addDel(request):
+    if not request.user.is_superuser:
+        return redirect('/login')
     studysession = StudySession.objects.all()
     return render(request, "html/index_addDel.html", {"studysession": studysession})
 
 
 # сохранение данных в бд
 def create(request):
+    if not request.user.is_superuser:
+        return redirect('/login')
     if request.method == "POST":
         studysession = StudySession()
         studysession.group = request.POST.get("group")
@@ -40,9 +44,12 @@ def create(request):
 
 # изменение данных в бд
 def edit(request, id):
+    if not request.user.is_superuser:
+        return redirect('/login')
     try:
+        if not request.user.is_superuser:
+            return redirect('/login')
         studysession = StudySession.objects.get(id=id)
-
         if request.method == "POST":
             studysession.group = request.POST.get("group")
             studysession.title = request.POST.get("title")
@@ -62,6 +69,8 @@ def edit(request, id):
 
 # удаление данных из бд
 def delete(request, id):
+    if not request.user.is_superuser:
+        return redirect('/login')
     try:
         studysession = StudySession.objects.get(id=id)
         studysession.delete()

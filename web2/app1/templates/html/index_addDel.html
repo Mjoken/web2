@@ -21,7 +21,11 @@
 	<link rel="stylesheet" href="/static/styles/styles.css">
 
 	<link rel="icon" href="/static/data/favicon.svg" type="image/svg+xml">
-
+    <style>
+        .form-control{
+        margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
 
@@ -77,16 +81,16 @@
                    <label for="CommentInput">Введите заметку (необязательно) </label><br>
                     <input type="text" class="form-control" name="comment" id="CommentInput"/>
                </div>
-               <p>
+               <div class="form-group col-md-6">
                 <label>Введите время начала занятия </label><br>
                 <input type="time" class="form-control" name="time_start" required />
                    <span class="validity"></span>
-            </p>
-            <p>
+               </div>
+            <div class="form-group col-md-6">
                 <label>Введите дату занятия </label><br>
-                <input type="date" name="date_start" required/>
+                <input type="date" class="form-control" name="date_start" required/>
                 <span class="validity"></span>
-            </p>
+            </div>
           </div>
 
             <input type="submit" value="Сохранить" class="btn btn-primary">

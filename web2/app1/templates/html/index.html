@@ -83,7 +83,9 @@
 			<a href="/index.html" class="navbar-brand">Расписание</a>
 
 			<ul class="navbar-menu">
+				{% if request.user.is_superuser %}
 				<li><a href="/index_addDel.html">Работа с событиями</a></li>
+				{% endif %}
 				<li><a href="/index_info.html">Информация</a></li>
 				{% if request.user.is_authenticated %}
 				    <li><a style = "color: blue">{{ user.get_full_name }} </a>|<a href="/logout">Выйти</a></li>
