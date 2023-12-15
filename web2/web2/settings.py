@@ -28,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 ###!!!!!!ВСЕГДА ПРОПИСЫВАЙ СЮДА ПРИЛОЖЕНИЯ!!!!!###
 INSTALLED_APPS = (
@@ -39,6 +38,7 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "app1.apps.App1Config",
+    "students.apps.StudentsConfig",
 )
 
 MIDDLEWARE = [
@@ -101,6 +101,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'students.Student'
+
+ACCOUNT_AUTHENTICATION_METHOD ="email"
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

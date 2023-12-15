@@ -79,12 +79,12 @@
                </div>
                <p>
                 <label>Введите время начала занятия </label><br>
-                <input type="datetime-local" name="time_start" required />
+                <input type="time" name="time_start" required />
                    <span class="validity"></span>
             </p>
             <p>
-                <label>Введите время окончания занятия </label><br>
-                <input type="datetime-local" name="time_end" required/>
+                <label>Введите дату занятия </label><br>
+                <input type="date" name="date_start" required/>
                 <span class="validity"></span>
             </p>
           </div>
@@ -111,7 +111,7 @@
             <td>{{ lesson.subgroup }}</td>
             <td>{{ lesson.comment }}</td>
             <td>{{ lesson.time_start }}</td>
-            <td>{{ lesson.time_end }}</td>
+            <td>{{ lesson.date_start }}</td>
             <td><a class="btn btn-success" href="edit/{{lesson.id}}">Изменить</a> | <a class="btn btn-danger" href="delete/{{lesson.id}}">Удалить</a></td>
         </tr>
         {% endfor %}

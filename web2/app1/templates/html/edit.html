@@ -83,12 +83,12 @@
            <div class="form-group">
              <p>
             <label>Время начала занятия </label><br>
-            <input type="datetime-local" name="time_start" value = "{{studysession.time_start.value|date:'yyyy-MM-ddTHH:mm'}}" required/>
+            <input type="time" name="time_start" id = "time_start" placeholder="{{studysession.time_start}}" value = "{{studysession.time_start}}" required/>
                  <span class="validity"></span>
             </p>
              <p>
-            <label>Время окончания занятия </label><br>
-            <input type="datetime-local" name="time_end" value = "{{studysession.value|date:'yyyy-MM-ddThh:mm'}}" required/>
+            <label>Введите дату занятия </label><br>
+            <input type="date" name="date_start" id = "date_start" placeholder="{{studysession.date_start}}" value ="{{studysession.date_start|date:'Y-m-d'}}" required/>
                  <span class="validity"></span>
             </p>
            </div>
