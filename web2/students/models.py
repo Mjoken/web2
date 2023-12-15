@@ -11,7 +11,7 @@ from students.managers import *
 class Student(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"),
                               unique=True,
-                              error_messages={'unique': _("A user is already registered with this email address")})
+                              error_messages={'unique': _("Почта уже зарегистрирована на сайте!"),})
     first_name = models.CharField(max_length=55)
     last_name = models.CharField(max_length=55)
     second_name = models.CharField(max_length=55)

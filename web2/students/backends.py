@@ -6,6 +6,8 @@ class EmailBackend(BaseBackend):
             user = Student.objects.get(email=username)
             if user.check_password(password):
                 return user
+        except Student.MultipleObjectsReturned:
+            user = Student.objects.filter(email=username.order_by('id').first())
         except Student.DoesNotExist:
             return None
 

@@ -67,17 +67,12 @@
           <div class="card-body p-5 text-center">
             <div class="mb-md-5 mt-md-4 pb-5">
 				<form method="post">
-					{% csrf_token %}
 					<h2 class="fw-bold mb-2 text-uppercase">Вход</h2>
-					<p class="text-white-50 mb-5">Введите Адрес Эл. Почты и пароль</p>
+					<p class="text-black-50 mb-5">Введите Адрес Эл. Почты и пароль</p>
 					<div class="form-outline form-white mb-4">
-						<input type="text" name="email" class="form-control" placeholder="AllEgg@mail.ru" id="email" title="Электронная почта" maxlength="320" required="">
-						<label class="form-label" for="email">Эл. Почта</label>
+						<p>{{form.as_p}}</p>
 					</div>
-					<div class="form-outline form-white mb-4">
-						<input type="password" name="password" class="form-control" placeholder="Ваш пароль" id="password" title="Пароль" required>
-						<label class="form-label" for="password">Пароль</label>
-					</div>
+					{% csrf_token %}
 					<button class="btn btn-outline-dark btn-lg px-5" type="submit">Войти</button>
 				</form>
             </div>

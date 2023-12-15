@@ -11,10 +11,10 @@ class UserForm(forms.ModelForm):
         fields = ('email', 'first_name', 'last_name', 'second_name', 'group', 'subgroup', 'is_mag', 'id_card')
 
 
-class UserLoginForm(AuthenticationForm):
+class UserLoginForm(forms.Form):
     email = forms.EmailField(label="Адрес эл. почты", widget=forms.TextInput(
         attrs={'class': 'form-control',
-               'placeholder': 'AllEgg@mail.ru',
+               'placeholder': 'AllEgg2@mail.ru',
                'id': 'email',
                'title': 'Электронная почта',
                }))
@@ -27,22 +27,25 @@ class UserLoginForm(AuthenticationForm):
         }
     ))
 
+    class Meta:
+        model = Student
+        fields = ('email',
+                  'password')
+
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
 
-    class Meta:
-        model = Student
-        fields = ('email', 'password')
-
 
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(label="Адрес Эл.почты", max_length=200, help_text='Необходимо ввести Email, ранее не зарегистрированный', required=True)
+    email = forms.EmailField(label="Адрес эл.почты", max_length=200,
+                             help_text='Необходимо ввести Email, ранее не зарегистрированный', required=True)
     first_name = forms.CharField(label='Имя', max_length=100, required=True)
     last_name = forms.CharField(label='Фамилия', max_length=100, required=True)
     second_name = forms.CharField(label='Отчество', max_length=100, required=True)
     group = forms.CharField(label='Группа', max_length=10, required=True)
     subgroup = forms.CharField(label='Подгруппа', max_length=10, required=False)
-    id_card = forms.IntegerField(label='Номер ст. билета', help_text='Цифровое представление ст. Билета (7 цифр)', min_value=0, max_value=9999999)
+    id_card = forms.IntegerField(label='Номер ст. билета', help_text='Цифровое представление ст. Билета (7 цифр)',
+                                 min_value=0, max_value=9999999)
     is_mag = forms.BooleanField(label='Магистрант', required=False)
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Подтвердите Пароль', widget=forms.PasswordInput)
@@ -81,6 +84,7 @@ class CustomUserCreationForm(UserCreationForm):
         if cd['password1'] != cd['password2']:
             raise forms.ValidationError('Пароли не совпадают.')
         return cd['password2']
+
 
 class CustomUserChangeForm(UserChangeForm):
     class Meta:

@@ -24,10 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app1.urls')),
     path('/', include('app1.urls')),
-    path('login/',
-         auth_views.LoginView.as_view
-         (template_name='html/index_login.html',
-          authentication_form=UserLoginForm),
+    path('login/', views.index_login,
          name='login'),
     path('register/',
          views.index_register,
