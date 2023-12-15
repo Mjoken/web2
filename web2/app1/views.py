@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+
+from students.forms import CustomUserCreationForm
 from .models import *
 
 
@@ -73,14 +75,14 @@ def index_info(request):
 
 def index_register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             # получаем имя пользователя и пароль из формы
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password1')
             # выполняем аутентификацию
-            user = authenticate(username=username, password=password)
+            user = authenticate(email=email, password=password)
             login(request, user)
             return redirect('/')
     else:
