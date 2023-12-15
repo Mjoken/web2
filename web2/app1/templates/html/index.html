@@ -20,9 +20,62 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
 	<!-- Стили сайта !!!!###Переписать STYLESHEET под STATIC папку###!!! -->
-	<link rel="stylesheet" href="/static/styles/styles.css">
+	<link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
+
+	<style>
+	ul {list-style-type: none;}
+
+	.week {
+	  margin-left: auto;
+      margin-right: auto;
+	  box-sizing: border-box;
+	  font-family: Verdana, sans-serif;
+	  padding: 70px 25px;
+	  width: 40%;
+	  background-color: lightblue;
+	  text-align: center;
+	  border-radius: 80px;
+	  margin-bottom: 30px;
+	}
+
+	.week ul {
+	  margin: 0;
+	  padding: 0;
+	}
+
+	.week ul li {
+	  color: white;
+	  font-size: 20px;
+	  text-transform: uppercase;
+	  letter-spacing: 3px;
+	}
+	.prev, .next {
+		width: auto;
+		font-size: 30px;
+		border-radius: 0 3px 3px 0;
+		user-select: none;
+		color: white;
+		text-decoration: none;
+		transition: all .1s ease-in-out;
+	}
+	.prev {
+	  float: left;
+	}
+
+	.next {
+	  float: right;
+	}
+
+ 	.week .prev:hover, .next:hover {
+	  color: coral;
+	  border-radius: 50%;
+	}
+
+	</style>
 
 	<link rel="icon" href="/static/data/favicon.svg" type="image/svg+xml">
+
+
 </head>
 <body>
 	<nav class="navbar">
@@ -40,6 +93,21 @@
 			</ul>
 		</div>
 	</nav>
+
+	<!-- Недели -->
+
+	<div class="week">
+	  <ul>
+		<li><a class="prev" onclick="plusSlides(-1)">❮</a></li>
+		<li><a class="next" onclick="plusSlides(1)">❯</a></li>
+		<li>
+		  <span class="slides" style="font-size:24px">1 неделя</span>
+		  <span class="slides" style="font-size:24px">2 неделя</span>
+		  <span class="slides" style="font-size:24px">3 неделя</span>
+		</li>
+	  </ul>
+	</div>
+
 	<!-- Событие -->
 	<div class="container">
 
@@ -66,6 +134,6 @@
 	</div>
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-	
+	<script src="/static/scripts.js"></script>
 </body>
 </html>
