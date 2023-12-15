@@ -28,6 +28,10 @@ class Student(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
+    def get_username(self):
+        return self.email
+
+
     class Meta:
         verbose_name = _("user")
         verbose_name_plural = _("users")

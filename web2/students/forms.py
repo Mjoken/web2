@@ -37,16 +37,16 @@ class UserLoginForm(AuthenticationForm):
 
 
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-    password = forms.CharField(label="Пароль", widget=PasswordInput)
-    password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput)
+    email = forms.EmailField(label="Адрес Эл.почты", max_length=200, help_text='Необходимо ввести Email, ранее не зарегистрированный', required=True)
     first_name = forms.CharField(label='Имя', max_length=100, required=True)
     last_name = forms.CharField(label='Фамилия', max_length=100, required=True)
     second_name = forms.CharField(label='Отчество', max_length=100, required=True)
     group = forms.CharField(label='Группа', max_length=10, required=True)
     subgroup = forms.CharField(label='Подгруппа', max_length=10, required=False)
-    id_card = forms.IntegerField(label='Номер ст. билета', min_value=0, max_value=9999999)
-    is_mag = forms.BooleanField(label='Форма обучения')
+    id_card = forms.IntegerField(label='Номер ст. билета', help_text='Цифровое представление ст. Билета (7 цифр)', min_value=0, max_value=9999999)
+    is_mag = forms.BooleanField(label='Магистрант')
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Подтвердите Пароль', widget=forms.PasswordInput)
 
     class Meta:  # define a metadata related to this class
         model = Student
@@ -58,7 +58,7 @@ class CustomUserCreationForm(UserCreationForm):
             'group',
             'id_card',
             'is_mag',
-            'password1',
+            'password',
             'password2',
 
         )

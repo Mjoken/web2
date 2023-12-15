@@ -23,7 +23,7 @@ class StudentUserManager(BaseUserManager):
                           last_name=last_name,
                           **extra_fields)
         user.set_password(password)
-        user.save()
+        user.save(using=self._db)
         return user
 
     def create_superuser(self, email, password, **extra_fields):

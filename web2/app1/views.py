@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.http import HttpResponse, HttpResponseNotFound, Http404
@@ -80,13 +81,16 @@ def index_register(request):
             form.save()
             # получаем имя пользователя и пароль из формы
             email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password1')
+            password = form.cleaned_data.get('password2')
+            messages.success(request, "Вы успешно зарегистрированы")
             # выполняем аутентификацию
             user = authenticate(email=email, password=password)
             login(request, user)
             return redirect('/')
+        else:
+            messages.error(request,"Ошибка при регистрации")
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'html/index_register.html', {'form': form})
 
 

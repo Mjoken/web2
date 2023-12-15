@@ -7,6 +7,7 @@ from .models import *
 from students.forms import CustomUserCreationForm, CustomUserChangeForm
 
 class MyUserAdmin(UserAdmin):
+    form = CustomUserCreationForm
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = Student
