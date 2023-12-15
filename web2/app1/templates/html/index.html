@@ -86,7 +86,7 @@
 				<li><a href="/index_addDel.html">Работа с событиями</a></li>
 				<li><a href="/index_info.html">Информация</a></li>
 				{% if request.user.is_authenticated %}
-				    <li><a style = "color: blue">{{ user.get_username }} </a>|<a href="/logout">Выйти</a></li>
+				    <li><a style = "color: blue">{{ user.student.get_username }} </a>|<a href="/logout">Выйти</a></li>
 				{% else %}
 				     <li><a href="/register">Регистрация</a>|<a href="/login">Войти</a></li>
 				{% endif %}
@@ -122,6 +122,7 @@
 						<h3>{{ lesson.title }}</h3>
 						<div class="info-description">
 							<span class="time">{{ lesson.time_start }}</span>
+							<span class="date">{{ lesson.date_start }}</span>
 							<span class="description">{{ lesson.comment }}</span>
 							<button class="go-to-new"><ion-icon name="open-outline"></ion-icon></button>
 						</div>

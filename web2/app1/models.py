@@ -8,5 +8,5 @@ class StudySession(models.Model):
     session_type = models.PositiveSmallIntegerField(default=0, blank=True, null=True)
     subgroup = models.PositiveSmallIntegerField(default=0, blank=True, null=True)
     comment = models.TextField(default="Здесь могла быть ваша заметка", blank=True, null=True)
-    time_start = models.DateTimeField()
-    time_end = models.DateTimeField()
+    date_start = models.DateField(auto_now_add=True, blank=True)
+    time_start = models.TimeField(auto_now_add=True, blank=True)

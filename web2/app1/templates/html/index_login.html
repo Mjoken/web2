@@ -46,12 +46,45 @@
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-	<form method="post">
-			<div class="container">
-				{% csrf_token %}
-				{{form.as_p}}
-				<button type="submit" class="btn btn-primary">Вход</button>
+    <!--<form method="post">
+			<div class="fieldWrapper">
+				<label for="email">Адрес эл. почты:</label>
+				<input type="text" name="email" class="form-control" placeholder="AllEgg@mail.ru" id="email" title="Электронная почта" maxlength="320" required="">
 			</div>
-	</form>
+			<div class="fieldWrapper">
+
+            <label for="password">Пароль:</label>
+				<input type="password" name="password" class="form-control" placeholder="Ваш пароль" id="password" title="Пароль" required>
+
+			</div>
+    <button type="submit" class="btn btn-primary">Вход</button>
+</form> -->
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-white text-dark" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+				<form method="post">
+					{% csrf_token %}
+					<h2 class="fw-bold mb-2 text-uppercase">Вход</h2>
+					<p class="text-white-50 mb-5">Введите Адрес Эл. Почты и пароль</p>
+					<div class="form-outline form-white mb-4">
+						<input type="text" name="email" class="form-control" placeholder="AllEgg@mail.ru" id="email" title="Электронная почта" maxlength="320" required="">
+						<label class="form-label" for="email">Эл. Почта</label>
+					</div>
+					<div class="form-outline form-white mb-4">
+						<input type="password" name="password" class="form-control" placeholder="Ваш пароль" id="password" title="Пароль" required>
+						<label class="form-label" for="password">Пароль</label>
+					</div>
+					<button class="btn btn-outline-dark btn-lg px-5" type="submit">Войти</button>
+				</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
