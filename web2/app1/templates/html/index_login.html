@@ -46,11 +46,11 @@
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-
-<form method="post">
+    <form method="post">
     {% for field in form %}
         <div class="fieldWrapper">
             {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
             {% if field.help_text %}
             <p class="help">{{ field.help_text|safe }}</p>
             {% endif %}
