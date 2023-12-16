@@ -38,17 +38,60 @@ class UserLoginForm(forms.Form):
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(label="Адрес эл.почты", max_length=200,
-                             help_text='Необходимо ввести Email, ранее не зарегистрированный', required=True)
-    first_name = forms.CharField(label='Имя', max_length=100, required=True)
-    last_name = forms.CharField(label='Фамилия', max_length=100, required=True)
-    second_name = forms.CharField(label='Отчество', max_length=100, required=True)
-    group = forms.CharField(label='Группа', max_length=10, required=True)
-    subgroup = forms.CharField(label='Подгруппа', max_length=10, required=False)
+                             help_text='Необходимо ввести Email, ранее не зарегистрированный', required=True,
+                             widget=forms.TextInput(
+                                 attrs={
+                                     'class': 'form-control',
+                                 }
+                             ))
+    first_name = forms.CharField(label='Имя', max_length=100, required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
+    last_name = forms.CharField(label='Фамилия', max_length=100, required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
+    second_name = forms.CharField(label='Отчество', max_length=100, required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
+    group = forms.CharField(label='Группа', max_length=10, required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
+    subgroup = forms.CharField(label='Подгруппа', max_length=10, required=False, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
     id_card = forms.IntegerField(label='Номер ст. билета', help_text='Цифровое представление ст. Билета (7 цифр)',
-                                 min_value=0, max_value=9999999)
-    is_mag = forms.BooleanField(label='Магистрант', required=False)
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Подтвердите Пароль', widget=forms.PasswordInput)
+                                 min_value=0, max_value=9999999,
+                                 widget=forms.TextInput(
+                                     attrs={
+                                         'class': 'form-control',
+                                     }
+                                 ))
+    is_mag = forms.BooleanField(label='Магистрант', required=False,
+                                widget=forms.CheckboxInput(
+                                    attrs={
+                                        'class': 'checkmark',
+                                    }
+                                ))
+    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
+    password2 = forms.CharField(label='Подтвердите Пароль', widget=forms.PasswordInput(
+        attrs={
+            'class': 'form-control',
+        }
+    ))
 
     class Meta:  # define a metadata related to this class
         model = Student
